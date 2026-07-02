@@ -1,21 +1,17 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
- <meta name="google-site-verification" content="cTnFmNC1TT4KRTNinacrE4PQ-oLgorlkjh7Su75nRHg" />
-  <meta name="description"
-content="Explore quality doors and secure lock solutions including wooden doors, fibre doors, front door locks and bathroom locks.">
+    <meta name="google-site-verification" content="cTnFmNC1TT4KRTNinacrE4PQ-oLgorlkjh7Su75nRHg" />
+    <meta name="description" content="Explore quality doors and secure lock solutions including wooden doors, fibre doors, front door locks and bathroom locks.">
 
-<meta name="keywords"
-content="doors, locks, door locks, front door locks, bathroom locks, wooden doors, fibre doors, security locks, home doors, modern doors">
+    <meta name="keywords" content="doors, locks, door locks, front door locks, bathroom locks, wooden doors, fibre doors, security locks, home doors, modern doors">
 
-<meta name="robots"
-content="index, follow">
+    <meta name="robots" content="index, follow">
 
-<meta name="author"
-content="Doors & Locks">
+    <meta name="author" content="Doors & Locks">
 
     <title>DOORS AND LOCKS</title>
 
@@ -26,6 +22,7 @@ content="Doors & Locks">
             --bg: #0b0c10;
             --gold: #d4af37;
             --text: #c5c6c7;
+            --bg-secondary: #1f2833;
         }
 
         * {
@@ -45,7 +42,7 @@ content="Doors & Locks">
         header {
             padding: 20px;
             display: flex;
-            justify-content: flex-end; /* ബട്ടൺ വലതുവശത്ത് വരാൻ */
+            justify-content: flex-end;
             position: absolute;
             width: 100%;
             top: 0;
@@ -53,7 +50,7 @@ content="Doors & Locks">
             z-index: 10;
         }
 
-        /* CONTACT BUTTON WITH GOLD SHADE */
+        /* CONTACT BUTTON */
         .btn-contact {
             padding: 12px 26px;
             border: 2px solid var(--gold);
@@ -63,19 +60,18 @@ content="Doors & Locks">
             font-weight: bold;
             background: transparent;
             transition: .3s;
-            /* Gold Glow Effect */
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); 
         }
 
         .btn-contact:hover {
             background: var(--gold);
             color: black;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.7); /* Hover ചെയ്യുമ്പോൾ ഗ്ലോ കൂടും */
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
         }
 
-        /* HERO */
+        /* HERO SECTION */
         .hero {
-            height: 100vh; /* ഹെഡർ അബ്സൊല്യൂട്ട് ആയതുകൊണ്ട് ഫുൾ സ്ക്രീൻ ആക്കി */
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -87,11 +83,20 @@ content="Doors & Locks">
                 url('https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200');
             background-size: cover;
             background-position: center;
+            position: relative;
         }
 
         .hero h1 {
             font-size: 55px;
             color: white;
+            margin-bottom: 5px;
+        }
+
+        .hero .location {
+            font-size: 16px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-weight: bold;
             margin-bottom: 20px;
         }
 
@@ -102,18 +107,91 @@ content="Doors & Locks">
         .hero p {
             max-width: 650px;
             line-height: 1.7;
-            margin-bottom: 30px;
         }
 
+        /* YELLOW BALL WITH SHADED TAIL INDICATOR */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            z-index: 5;
+            transition: opacity 0.4s ease;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.7));
+            position: absolute;
+            top: -25px;
+        }
+
+        .scroll-ball {
+            width: 16px;
+            height: 16px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--gold);
+            animation: dropTail 2s infinite ease-in-out;
+        }
+
+        @keyframes dropTail {
+            0% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(20px); opacity: 1; }
+            100% { transform: translateY(0); opacity: 0.5; }
+        }
+
+        /* COMPANY DETAILS SECTION */
+        .company-details {
+            padding: 80px 20px;
+            background: var(--bg-secondary);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        .about-content h2 {
+            font-size: 36px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .about-content h2 span {
+            color: var(--gold);
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-line-height: 1.8;
+            color: #afb1b6;
+        }
+
+        /* EXPLORE BUTTONS */
         .cta-buttons {
             display: flex;
             gap: 20px;
+            margin-bottom: 60px;
         }
 
         .btn {
             padding: 14px 34px;
             text-decoration: none;
             font-weight: bold;
+            border-radius: 4px;
+            transition: 0.3s;
+            white-space: nowrap;
         }
 
         .btn-gold {
@@ -121,34 +199,110 @@ content="Doors & Locks">
             color: black;
         }
 
+        .btn-gold:hover {
+            background: white;
+        }
+
         .btn-outline {
             border: 2px solid var(--gold);
             color: white;
         }
 
-        footer {
-            padding: 30px;
+        .btn-outline:hover {
+            background: var(--gold);
+            color: black;
+        }
+
+        /* INTERACTIVE OFFER SLIDER */
+        .offer-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        /* MOBILE */
+        .offer-container h3 {
+            font-size: 28px;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .offer-slider-space {
+            width: 100%;
+            height: 450px;
+            background: #111;
+            border: 2px solid #2f3b4c;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: grab;
+        }
+
+        .offer-slider-space:active {
+            cursor: grabbing;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-out;
+            will-change: transform;
+        }
+
+        .slider-item {
+            min-width: 100%;
+            height: 100%;
+            user-select: none;
+        }
+
+        .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        /* SLIDER INDICATOR DOTS (പുതുതായി ചേർത്തത്) */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #444;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--gold);
+            transform: scale(1.2);
+            box-shadow: 0 0 8px var(--gold);
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            background: var(--bg);
+        }
+
+        /* MOBILE RESPONSIVE */
         @media(max-width:768px) {
-            header {
-                padding: 15px;
-            }
-
-            .btn-contact {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
+            header { padding: 15px; }
+            .btn-contact { padding: 10px 20px; font-size: 14px; }
+            .hero h1 { font-size: 32px; }
+            .hero .location { font-size: 12px; }
+            .about-content h2 { font-size: 28px; }
+            .cta-buttons { flex-direction: row; width: auto; gap: 10px; }
+            .btn { padding: 12px 20px; font-size: 14px; }
+            .offer-slider-space { height: 250px; }
+            .dot { width: 10px; height: 10px; }
         }
     </style>
 </head>
@@ -156,22 +310,182 @@ content="Doors & Locks">
 <body>
 
     <header>
-        <!-- Nav പൂർണ്ണമായി ഒഴിവാക്കി ബട്ടൺ മാത്രം നൽകി -->
         <a href="contact.html" class="btn-contact">Contact</a>
     </header>
 
+    <!-- HERO SECTION -->
     <section class="hero">
         <h1>DOORS <span>&</span> LOCKS</h1>
+        <div class="location">ERATTUPETTA, KOTTAYAM</div>
         <p>Experience the perfect blend of luxury, security and timeless elegance.</p>
+        
+        <!-- Interactive Yellow Ball Indicator -->
+        <div class="scroll-indicator" id="scrollIndicator" onclick="scrollToContent()">
+            <div class="scroll-ball"></div>
+        </div>
+    </section>
+
+    <!-- SECOND SECTION -->
+    <section id="more-details" class="company-details">
+        
+        <!-- Company Description -->
+        <div class="about-content">
+            <h2>Our <span>15 Years</span> of Excellence</h2>
+            <p>For over a decade and a half, we have been delivering top-quality premium doors and high-security locking systems. We take pride in enhancing the beauty and safety of homes across Erattupetta and Kottayam with craftsmanship you can always trust.</p>
+        </div>
+
+        <!-- Explore Buttons -->
         <div class="cta-buttons">
             <a href="doors.html" class="btn btn-gold">Explore Doors</a>
             <a href="locks.html" class="btn btn-outline">Explore Locks</a>
         </div>
+
+        <!-- Touch/Drag/Auto Slider -->
+        <div class="offer-container">
+            <h3>Special Offers & Updates</h3>
+            <div class="offer-slider-space" id="sliderSpace">
+                <div class="slider-wrapper" id="sliderWrapper">
+                    <div class="slider-item">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000" alt="Offer 1">
+                    </div>
+                    <div class="slider-item">
+                        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1000" alt="Offer 2">
+                    </div>
+                    <div class="slider-item">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000" alt="Offer 3">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slider Dots Indicator (പുതുതായി ചേർത്തത്) -->
+            <div class="slider-dots" id="sliderDots">
+                <div class="dot active" onclick="goToSlide(0)"></div>
+                <div class="dot" onclick="goToSlide(1)"></div>
+                <div class="dot" onclick="goToSlide(2)"></div>
+            </div>
+        </div>
+
     </section>
 
     <footer>
         © 2026 DOORS & LOCKS
     </footer>
+
+    <script>
+        // 1. SCROLL DOWN FUNCTION & BALL HIDE
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        
+        function scrollToContent() {
+            document.getElementById('more-details').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.pointerEvents = 'none';
+            } else {
+                scrollIndicator.style.opacity = '1';
+                scrollIndicator.style.pointerEvents = 'auto';
+            }
+        });
+
+        // 2. SWIPE / DRAG / AUTO SLIDER SCRIPT WITH DOTS
+        const slider = document.getElementById('sliderSpace');
+        const wrapper = document.getElementById('sliderWrapper');
+        const items = document.querySelectorAll('.slider-item');
+        const dots = document.querySelectorAll('.dot');
+        
+        let isDragging = false;
+        let startX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID = 0;
+        let currentIndex = 0;
+        let autoSlideInterval;
+
+        // Touch & Mouse Events
+        slider.addEventListener('mousedown', dragStart);
+        slider.addEventListener('mouseup', dragEnd);
+        slider.addEventListener('mouseleave', dragEnd);
+        slider.addEventListener('mousemove', drag);
+        
+        slider.addEventListener('touchstart', dragStart);
+        slider.addEventListener('touchend', dragEnd);
+        slider.addEventListener('touchmove', drag);
+
+        function dragStart(e) {
+            clearInterval(autoSlideInterval);
+            isDragging = true;
+            startX = getPositionX(e);
+            animationID = requestAnimationFrame(animation);
+        }
+
+        function dragEnd() {
+            isDragging = false;
+            cancelAnimationFrame(animationID);
+            const movedBy = currentTranslate - prevTranslate;
+
+            if (movedBy < -100 && currentIndex < items.length - 1) currentIndex += 1;
+            if (movedBy > 100 && currentIndex > 0) currentIndex -= 1;
+
+            setPositionByIndex();
+            startAutoSlide();
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            const currentX = getPositionX(e);
+            currentTranslate = prevTranslate + (currentX - startX);
+        }
+
+        function getPositionX(e) {
+            return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+        }
+
+        function animation() {
+            setSliderPosition();
+            if (isDragging) requestAnimationFrame(animation);
+        }
+
+        function setSliderPosition() {
+            wrapper.style.transform = `translateX(${currentTranslate}px)`;
+        }
+
+        function setPositionByIndex() {
+            currentTranslate = currentIndex * -slider.offsetWidth;
+            prevTranslate = currentTranslate;
+            wrapper.style.transform = `translateX(${currentTranslate}px)`;
+            updateDots();
+        }
+
+        // Dot ക്ലിക്ക് ചെയ്യുമ്പോൾ ആ സ്ലൈഡിലേക്ക് പോകാൻ
+        function goToSlide(index) {
+            clearInterval(autoSlideInterval);
+            currentIndex = index;
+            setPositionByIndex();
+            startAutoSlide();
+        }
+
+        // ആക്റ്റീവ് ഡോട്ട് അപ്ഡേറ്റ് ചെയ്യാൻ
+        function updateDots() {
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        // Automatic Slide Function
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                currentIndex++;
+                if (currentIndex >= items.length) {
+                    currentIndex = 0;
+                }
+                setPositionByIndex();
+            }, 4000);
+        }
+
+        startAutoSlide();
+        window.addEventListener('resize', setPositionByIndex);
+    </script>
 
 </body>
 
