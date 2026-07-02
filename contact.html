@@ -16,6 +16,7 @@
 --card:#11151c;
 --gold:#d4af37;
 --text:#c5c6c7;
+--whatsapp:#25D366;
 }
 
 *{
@@ -121,26 +122,35 @@ line-height: 1.8;
 color: #aaa;
 }
 
-.contact{
-padding:30px 8% 70px;
-display:flex;
-flex-wrap:wrap;
-gap:25px;
-justify-content:center;
+/* പ്രധാന കണ്ടെയ്നർ */
+.contact-container {
+display: flex;
+flex-direction: column;
+gap: 25px;
+padding: 30px 8% 70px;
 width: 100%;
 }
 
-.box{
+/* Phone, WhatsApp ബോക്സുകൾ ഒരേ ലൈനിൽ നിർത്താൻ */
+.top-row {
+display: flex;
+gap: 25px;
+width: 100%;
+}
+
+.box {
 background:#141923;
 border: 1px solid rgba(255, 255, 255, 0.06);
 padding:35px 25px;
 border-radius:20px;
-min-width:300px;
 flex: 1;
-max-width: 450px;
 text-align:center;
 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 transition: transform 0.3s ease;
+}
+
+.full-width-box {
+max-width: 100%;
 }
 
 .box:hover {
@@ -160,6 +170,26 @@ color: #aaa;
 font-size: 16px;
 margin: 10px 0;
 font-weight: 500;
+}
+
+.whatsapp-btn{
+display:inline-block;
+margin-top:15px;
+padding:12px 30px;
+background:var(--whatsapp);
+color:white;
+text-decoration:none;
+border-radius:999px;
+font-weight:bold;
+text-transform: uppercase;
+font-size: 13px;
+letter-spacing: 1px;
+transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+transform: scale(1.03);
 }
 
 .location-btn{
@@ -194,12 +224,12 @@ color: #666;
 @media(max-width:768px){
 
 header{
-padding: 16px 15px; /* ഇവിടെ സൈഡ് സ്പേസ് കുറച്ചു */
+padding: 16px 15px;
 width: 100%;
 }
 
 .logo{
-font-size: 18px; /* ലോഗോ കട്ടാവാതിരിക്കാൻ സൈസ് കുറച്ചു */
+font-size: 18px;
 letter-spacing: 1px;
 }
 
@@ -226,7 +256,7 @@ font-size: 14px;
 margin: 0 15px 30px;
 padding: 25px 15px;
 border-radius: 16px;
-width: calc(100% - 30px); /* പേജ് ഫുൾ വിഡ്ത് ആക്കാൻ സഹായിക്കും */
+width: calc(100% - 30px);
 }
 
 .about h2{
@@ -239,30 +269,38 @@ font-size: 13px;
 line-height: 1.6;
 }
 
-.contact{
+/* മൊബൈലിലും ഒരേ ലൈനിൽ നിർത്താൻ ഫ്ലെക്സ് ഡയറക്ഷൻ മാറ്റിയില്ല */
+.contact-container {
 padding: 10px 15px 50px;
-gap: 20px;
-flex-direction: column;
-align-items: center;
-width: 100%;
+gap: 15px;
+}
+
+.top-row {
+display: flex;
+flex-direction: row; /* മൊബൈലിലും സൈഡ്-ബൈ-സൈഡ് ആക്കി */
+gap: 10px; /* ബോക്സുകൾ തമ്മിലുള്ള ഗ്യാപ്പ് കുറച്ചു */
 }
 
 .box{
-width: 100%;
-max-width: 100%;
-min-width: 0;
-padding: 25px 20px;
-border-radius: 16px;
+padding: 20px 10px; /* മൊബൈലിൽ ബോക്സിനുള്ളിലെ സ്പേസ് കുറച്ചു */
+border-radius: 12px;
 }
 
 .box h3{
-font-size: 18px;
-margin-bottom: 10px;
+font-size: 15px; /* ഹെഡിങ് സൈസ് മൊബൈലിന് പാകത്തിലാക്കി */
+margin-bottom: 8px;
 }
 
 .box p{
-font-size: 14px;
-margin: 6px 0;
+font-size: 12px; /* മൊബൈലിൽ അക്ഷരങ്ങൾ ചെറുതാക്കി (അല്ലെങ്കിൽ കട്ടാകും) */
+margin: 4px 0;
+}
+
+.whatsapp-btn{
+padding: 8px 14px;
+font-size: 10px;
+margin-top: 8px;
+width: 100%; /* ബട്ടൺ ബോക്സിന് ഒപ്പമാക്കാൻ */
 }
 
 .location-btn{
@@ -325,28 +363,43 @@ We provide premium doors, advanced lock systems and elegant entrance solutions w
 </p>
 </section>
 
-<section class="contact">
+<!-- കണ്ടെയ്നർ -->
+<section class="contact-container">
 
-<div class="box">
-<h3>📍 Location</h3>
-<a
-class="location-btn"
-href="https://maps.app.goo.gl/TJQgBf6fwvMYdoGF8" target="_blank">
-View Location
-</a>
-</div>
+  <!-- മൊബൈലിലും കമ്പ്യൂട്ടറിലും ഒരേപോലെ സൈഡ്-ബൈ-സൈഡ് വരാൻ -->
+  <div class="top-row">
+    
+    <!-- Phone Box -->
+    <div class="box">
+      <h3>☎ Phone</h3>
+      <p>+91 97443 90615</p>
+      <p>+91 70126 06390</p>
+      <p>+91 99464 73841</p>
+    </div>
 
-<div class="box">
-<h3>☎ Phone</h3>
-<p>+91 97443 90615</p>
-<p>+91 70126 06390</p>
-<p>+91 99464 73841</p>
-</div>
+    <!-- WhatsApp Box -->
+    <div class="box">
+      <h3>💬 WhatsApp</h3>
+      <p>Chat with us for quick support and details.</p>
+      <a class="whatsapp-btn" href="https://wa.me/919744390615" target="_blank">
+        Chat Us
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ലൊക്കേഷൻ ബോക്സ് താഴെ മാത്രം ഫുൾ വിഡ്തിൽ -->
+  <div class="box full-width-box">
+    <h3>📍 Location</h3>
+    <a class="location-btn" href="https://maps.app.goo.gl/TJQgBf6fwvMYdoGF8" target="_blank">
+      View Location
+    </a>
+  </div>
 
 </section>
 
 <footer>
-© 2026 Doors & Locks
+© Doors & Locks
 </footer>
 
 </body>
