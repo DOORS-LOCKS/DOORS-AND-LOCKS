@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Premium Doors & Accessories</title>
-<link class="icon" type="image/png" href="logo DOOR.png" alt="Modern security door">
+<link rel="icon" type="image/png" href="logo DOOR.png" alt="Modern security door">
 
 <style>
 :root{
@@ -429,6 +429,21 @@ color: #000;
 border-color: var(--gold);
 }
 
+/* More designs indicator info */
+.more-designs-indicator {
+text-align: center;
+margin-top: 35px;
+color: var(--gold);
+font-size: 13px;
+letter-spacing: 1px;
+font-weight: 500;
+background: rgba(212, 175, 55, 0.05);
+padding: 12px;
+border-radius: 12px;
+border: 1px dashed rgba(212, 175, 55, 0.2);
+display: none;
+}
+
 /* --- PRODUCT DETAILS PAGE (MODAL) --- */
 .detail-overlay {
 position: fixed;
@@ -463,31 +478,6 @@ from { opacity: 0; transform: scale(0.95); }
 to { opacity: 1; transform: scale(1); }
 }
 
-/* Updated Gold Close Button & Border */
-.close-detail-btn {
-position: absolute;
-top: 20px;
-right: 20px;
-background: rgba(0, 0, 0, 0.4);
-border: 2px solid var(--gold);
-color: var(--gold);
-font-size: 24px;
-width: 45px;
-height: 45px;
-border-radius: 50%;
-cursor: pointer;
-display: flex;
-justify-content: center;
-align-items: center;
-transition: 0.3s;
-z-index: 10;
-}
-
-.close-detail-btn:hover {
-background: var(--gold);
-color: #000;
-}
-
 /* --- COMPUTER VIEW STYLING --- */
 .detail-img-box {
 flex: 1;
@@ -511,24 +501,28 @@ object-fit: cover;
 flex-shrink: 0;
 }
 
+/* Circular slider buttons as requested in image */
 .slider-btn {
-display: block;
+display: flex;
+align-items: center;
+justify-content: center;
 position: absolute;
 top: 50%;
 transform: translateY(-50%);
-background: rgba(0,0,0,0.6);
+background: rgba(0,0,0,0.5);
 color: #fff;
 border: none;
-padding: 12px;
+width: 45px;
+height: 45px;
+border-radius: 50%;
 cursor: pointer;
-font-size: 18px;
-z-index: 5;
-border-radius: 4px;
+font-size: 16px;
+z-index: 10;
 transition: 0.2s;
 }
 .slider-btn:hover { background: var(--gold); color: #000; }
-.slider-btn.prev { left: 10px; }
-.slider-btn.next { right: 10px; }
+.slider-btn.prev { left: 15px; }
+.slider-btn.next { right: 15px; }
 
 /* SLIDER INDICATOR DOTS */
 .slider-dots {
@@ -594,6 +588,7 @@ background: rgba(255,255,255,0.02);
 padding: 12px 20px;
 border-radius: 12px;
 border: 1px solid rgba(255,255,255,0.04);
+flex-wrap: wrap;
 }
 
 .detail-offer {
@@ -668,6 +663,11 @@ pointer-events: none;
 transition: all 0.3s ease;
 }
 
+/* Mobile Toggle Menu-വിൽ നിന്ന് Accessories ബട്ടൺ മറയ്ക്കുന്നു */
+nav a#navAccessories {
+display: none !important;
+}
+
 nav.show{ 
 opacity: 1; 
 transform: translateY(0) scale(1);
@@ -728,7 +728,15 @@ margin-top: 20px;
 .discount-badge { font-size: 9px; padding: 1px 4px; }
 .book-btn { padding: 8px 4px; font-size: 10px; border-radius: 6px; }
 
-.slider-btn { display: none !important; }
+/* Enabled buttons over slider image on mobile as requested */
+.slider-btn { 
+display: flex !important; 
+width: 36px;
+height: 36px;
+font-size: 14px;
+}
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
 
 .slider-dots { 
 display: flex !important; 
@@ -738,32 +746,26 @@ z-index: 15;
 }
 .dot { pointer-events: auto; } 
 
-/* Fix: detail-img-box overflow removed to keep dots stable */
 .detail-img-box {
 min-height: 250px;
 height: 250px;
 overflow: hidden !important;
 }
 
-/* Fix: slider-wrapper handles the scrolling now */
+/* Touch-swipe disabled on mobile layout to enforce button usage */
 .slider-wrapper {
 display: flex;
 width: 100%;
 height: 100%;
-overflow-x: auto !important;
-overflow-y: hidden !important;
-scroll-snap-type: x mandatory;
--webkit-overflow-scrolling: touch;
+overflow: hidden !important;
 scrollbar-width: none; 
-transform: none !important; 
+transition: transform 0.4s ease-in-out !important;
 }
-.slider-wrapper::-webkit-scrollbar { display: none; }
 
 .slider-wrapper img {
 width: 100% !important;
 min-width: 100%;
 height: 100%;
-scroll-snap-align: start;
 object-fit: cover;
 }
 
@@ -822,13 +824,17 @@ overflow-y: auto;
 
 <div class="product-grid" id="productGrid"></div>
 
+<!-- Custom indicator for Wood and Fibre doors panels -->
+<div class="more-designs-indicator" id="moreDesignsNotice">
+✦ +50 More Custom Premium Designs & Sizes Available in Store! Contact Us directly to view full catalogue. ✦
+</div>
+
 </div>
 </div>
 
-<!-- PRODUCT MODAL LAYER -->
+<!-- PRODUCT MODAL LAYER (Close Button Removed) -->
 <div class="detail-overlay" id="productDetailModal">
 <div class="detail-container">
-<button class="close-detail-btn" onclick="closeProductDetail()">&times;</button>
 <div class="detail-img-box" id="detailImgBox">
 <button class="slider-btn prev" onclick="moveSlider(-1)">&#10094;</button>
 <button class="slider-btn next" onclick="moveSlider(1)">&#10095;</button>
@@ -841,6 +847,7 @@ overflow-y: auto;
 <div class="detail-price-box">
 <span class="detail-offer" id="detailOfferPrice">₹0</span>
 <span class="detail-original" id="detailOriginalPrice">₹0</span>
+<span class="discount-badge" id="detailDiscountBadge">0% OFF</span>
 </div>
 <p class="detail-desc" id="detailDesc">Product Description goes here...</p>
 <div class="detail-action-btns">
@@ -962,6 +969,14 @@ function switchCategory(catName, element) {
 
     const filterTitle = document.getElementById("filterTitle");
     const filterList = document.getElementById("filterList");
+    const moreNotice = document.getElementById("moreDesignsNotice");
+
+    // Show indicator text for Wood & Fibre doors
+    if(catName === 'Fibre' || catName === 'Wood') {
+        moreNotice.style.display = "block";
+    } else {
+        moreNotice.style.display = "none";
+    }
 
     if(catName === 'accessories') {
         filterTitle.innerText = "EXPLORE BY ACCESSORY TYPE";
@@ -1034,6 +1049,16 @@ function openProductDetail(title, img, desc, tag, offerPrice, origPrice) {
     document.getElementById("detailOfferPrice").innerText = "₹" + offerPrice.toLocaleString('en-IN');
     document.getElementById("detailOriginalPrice").innerText = "₹" + origPrice.toLocaleString('en-IN');
     
+    // Auto percentage calculation inside Modal view
+    const modalDiscount = (origPrice && origPrice > offerPrice) ? Math.round(((origPrice - offerPrice) / origPrice) * 100) : 0;
+    const discountBadge = document.getElementById("detailDiscountBadge");
+    if(modalDiscount > 0) {
+        discountBadge.innerText = modalDiscount + "% OFF";
+        discountBadge.style.display = "inline-block";
+    } else {
+        discountBadge.style.display = "none";
+    }
+
     const images = [img, img, img];
 
     const wrapper = document.getElementById("sliderWrapper");
@@ -1049,8 +1074,6 @@ function openProductDetail(title, img, desc, tag, offerPrice, origPrice) {
     currentSlideIndex = 0;
     totalSlides = images.length;
     
-    // Reset positions
-    document.getElementById("sliderWrapper").scrollLeft = 0;
     updateSliderPosition();
 
     document.getElementById("detailBookBtn").onclick = function() {
@@ -1066,7 +1089,6 @@ function openProductDetail(title, img, desc, tag, offerPrice, origPrice) {
 }
 
 function moveSlider(direction) {
-    if (window.innerWidth <= 768) return;
     currentSlideIndex += direction;
     if (currentSlideIndex >= totalSlides) currentSlideIndex = 0;
     if (currentSlideIndex < 0) currentSlideIndex = totalSlides - 1;
@@ -1075,56 +1097,21 @@ function moveSlider(direction) {
 
 function goToSlide(index) {
     currentSlideIndex = index;
-    
-    if (window.innerWidth <= 768) {
-        const wrapper = document.getElementById("sliderWrapper");
-        const width = wrapper.clientWidth;
-        wrapper.scrollTo({
-            left: index * width,
-            behavior: 'smooth'
-        });
-    } else {
-        updateSliderPosition();
-    }
+    updateSliderPosition();
 }
 
 function updateSliderPosition() {
     const wrapper = document.getElementById("sliderWrapper");
     const dots = document.querySelectorAll(".dot");
     
-    if (window.innerWidth > 768) {
-        wrapper.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
-    } else {
-        wrapper.style.transform = `none`;
-    }
+    // Using transform translates uniform layout beautifully across both desktop & mobile screens
+    wrapper.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
     
     dots.forEach((dot, idx) => {
         if (idx === currentSlideIndex) dot.classList.add("active");
         else dot.classList.remove("active");
     });
 }
-
-// Fixed mobile horizontal scroll trigger
-function handleMobileScroll() {
-    if (window.innerWidth <= 768) {
-        const wrapper = document.getElementById("sliderWrapper");
-        const width = wrapper.clientWidth;
-        if (width === 0) return;
-        
-        const index = Math.round(wrapper.scrollLeft / width);
-        currentSlideIndex = index;
-        
-        const dots = document.querySelectorAll(".dot");
-        dots.forEach((dot, idx) => {
-            if (idx === index) dot.classList.add("active");
-            else dot.classList.remove("active");
-        });
-    }
-}
-
-// Event listeners attached directly to the scrolling wrapper
-document.getElementById("sliderWrapper").addEventListener("scroll", handleMobileScroll);
-document.getElementById("sliderWrapper").addEventListener("scrollend", handleMobileScroll);
 
 function closeProductDetail() {
     document.getElementById("productDetailModal").style.display = "none";
